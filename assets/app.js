@@ -1,30 +1,31 @@
-// app.js
+// assets/app.js
 
 let currentPage = 0;
 let rowsPerPage = 1;
 let data = [];
 
 function processCSV() {
-    const fileInput = document.getElementById('csvFileInput');
-    const file = fileInput.files[0];
+    const filePath = 'data/papua.csv';
 
-    if (!file) {
-        alert('Por favor, selecciona un archivo CSV.');
-        return;
-    }
-
-    Papa.parse(file, {
-        header: true,
-        complete: function(results) {
-            data = results.data;
-            currentPage = 0;
-            displayPage(currentPage);
-            updatePaginationControls();
-        },
-        error: function(error) {
-            console.error('Error al procesar el archivo CSV:', error);
-        }
-    });
+    fetch(filePath)
+        .then(response => response.text())
+        .then(csvText => {
+            Papa.parse(csvText, {
+                header: true,
+                complete: function(results) {
+                    data = results.data;
+                    currentPage = 0;
+                    displayPage(currentPage);
+                    updatePaginationControls();
+                },
+                error: function(error) {
+                    console.error('Error al procesar el archivo CSV:', error);
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error al cargar el archivo CSV:', error);
+        });
 }
 
 function displayPage(page) {
@@ -80,3 +81,6 @@ function updatePaginationControls() {
         paginationControls.appendChild(button);
     }
 }
+
+// Procesar el archivo CSV al cargar la página
+document.addEventListener('DOMContentLoaded', processCSV);
