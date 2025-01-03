@@ -7,16 +7,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script defer src="assets/app.js"></script>
     <script defer src="assets/paginacion.js"></script>
+    <script defer src="assets/cards.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        #csvContainer {
+            height: 80vh; /* 80% de la altura de la página */
+        }
+    </style>
 </head>
 <body class="bg-gray-100 p-6">
     <div class="container mx-auto">
-        <h1 class="text-2xl font-bold mb-4">Contenido del Archivo CSV</h1>
-        <h2 class="text-xl font-semibold mt-6 mb-2">Contenido del CSV</h2>
-        <div id="csvContainer" class="overflow-x-auto">
+        <h1 class="text-2xl font-bold mb-4">Papua Nueva Guinea - Fishes</h1>
+        <div id="csvContainer" class="flex items-center justify-center overflow-x-auto">
             <!-- Las tarjetas se llenarán dinámicamente con JavaScript -->
         </div>
-        <div id="paginationControls" class="mt-4">
+        <div id="paginationControls" class="mt-4 flex justify-center">
             <!-- Los controles de paginación se llenarán dinámicamente con JavaScript -->
         </div>
     </div>

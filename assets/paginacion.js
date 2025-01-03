@@ -7,6 +7,10 @@ const maxPagesToShow = 7; // Mostrar un máximo de 7 páginas en la paginación
 
 function displayPage(page) {
     const container = document.getElementById('csvContainer');
+    if (!container) {
+        console.error('El contenedor csvContainer no se encuentra en el DOM.');
+        return;
+    }
     container.innerHTML = '';
 
     if (data.length === 0) {
@@ -20,16 +24,7 @@ function displayPage(page) {
 
     // Crear tarjetas para cada fila
     pageData.forEach(row => {
-        const card = document.createElement('div');
-        card.className = 'bg-white shadow-md rounded p-4 mb-4';
-
-        Object.keys(row).forEach(header => {
-            const p = document.createElement('p');
-            p.className = 'mb-2';
-            p.innerHTML = `<strong>${header}:</strong> ${row[header]}`;
-            card.appendChild(p);
-        });
-
+        const card = createCard(row);
         container.appendChild(card);
     });
 }
@@ -37,6 +32,10 @@ function displayPage(page) {
 function updatePaginationControls() {
     const totalPages = Math.ceil(data.length / rowsPerPage);
     const paginationControls = document.getElementById('paginationControls');
+    if (!paginationControls) {
+        console.error('El contenedor paginationControls no se encuentra en el DOM.');
+        return;
+    }
     paginationControls.innerHTML = '';
 
     const startPage = Math.max(0, currentPage - Math.floor(maxPagesToShow / 2));
@@ -65,7 +64,7 @@ function updatePaginationControls() {
     for (let i = startPage; i < endPage; i++) {
         const button = document.createElement('button');
         button.textContent = i + 1;
-        button.className = 'bg-blue-500 text-white px-4 py-2 m-1 rounded';
+        button.className = `px-4 py-2 m-1 rounded ${i === currentPage ? 'bg-blue-700 text-white' : 'bg-blue-500 text-white'}`;
         button.onclick = () => {
             currentPage = i;
             displayPage(currentPage);
