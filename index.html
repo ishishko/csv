@@ -5,26 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Procesar CSV</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-    <script defer src="./assets/app.js"></script>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <script defer src="app.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <h1>Subir y Procesar Archivo CSV</h1>
-    <input type="file" id="csvFileInput" accept=".csv" />
-    <button onclick="processCSV()">Procesar CSV</button>
-    <h2>Contenido del CSV</h2>
-    <table id="csvTable"></table>
+<body class="bg-gray-100 p-6">
+    <div class="container mx-auto">
+        <h1 class="text-2xl font-bold mb-4">Subir y Procesar Archivo CSV</h1>
+        <input type="file" id="csvFileInput" accept=".csv" class="mb-4 p-2 border border-gray-300 rounded" />
+        <button onclick="processCSV()" class="bg-blue-500 text-white px-4 py-2 rounded">Procesar CSV</button>
+        <h2 class="text-xl font-semibold mt-6 mb-2">Contenido del CSV</h2>
+        <div class="overflow-x-auto">
+            <table id="csvTable" class="min-w-full bg-white border border-gray-300">
+                <!-- La tabla se llenará dinámicamente con JavaScript -->
+            </table>
+        </div>
+        <div id="paginationControls" class="mt-4">
+            <!-- Los controles de paginación se llenarán dinámicamente con JavaScript -->
+        </div>
+    </div>
 </body>
 </html>
