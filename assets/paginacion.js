@@ -61,6 +61,19 @@ function updatePaginationControls() {
         }
     }
 
+    // Botón para bajar 10 páginas
+    if (currentPage >= 10) {
+        const prev10Button = document.createElement('button');
+        prev10Button.textContent = '<<';
+        prev10Button.className = 'bg-blue-500 text-white px-4 py-2 m-1 rounded';
+        prev10Button.onclick = () => {
+            currentPage = Math.max(0, currentPage - 10);
+            displayPage(currentPage);
+            updatePaginationControls();
+        };
+        paginationControls.appendChild(prev10Button);
+    }
+
     for (let i = startPage; i < endPage; i++) {
         const button = document.createElement('button');
         button.textContent = i + 1;
@@ -71,6 +84,19 @@ function updatePaginationControls() {
             updatePaginationControls();
         };
         paginationControls.appendChild(button);
+    }
+
+    // Botón para subir 10 páginas
+    if (currentPage < totalPages - 10) {
+        const next10Button = document.createElement('button');
+        next10Button.textContent = '>>';
+        next10Button.className = 'bg-blue-500 text-white px-4 py-2 m-1 rounded';
+        next10Button.onclick = () => {
+            currentPage = Math.min(totalPages - 1, currentPage + 10);
+            displayPage(currentPage);
+            updatePaginationControls();
+        };
+        paginationControls.appendChild(next10Button);
     }
 
     // Botón para la última página
