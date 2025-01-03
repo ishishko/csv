@@ -6,11 +6,11 @@ let data = [];
 const maxPagesToShow = 7; // Mostrar un máximo de 7 páginas en la paginación
 
 function displayPage(page) {
-    const table = document.getElementById('csvTable');
-    table.innerHTML = '';
+    const container = document.getElementById('csvContainer');
+    container.innerHTML = '';
 
     if (data.length === 0) {
-        table.innerHTML = '<tr><td class="border px-4 py-2">No hay datos para mostrar</td></tr>';
+        container.innerHTML = '<div class="border px-4 py-2">No hay datos para mostrar</div>';
         return;
     }
 
@@ -18,27 +18,19 @@ function displayPage(page) {
     const end = start + rowsPerPage;
     const pageData = data.slice(start, end);
 
-    // Crear encabezados de la tabla
-    const headers = Object.keys(data[0]);
-    const headerRow = document.createElement('tr');
-    headers.forEach(header => {
-        const th = document.createElement('th');
-        th.textContent = header;
-        th.className = 'bg-gray-200 border px-4 py-2';
-        headerRow.appendChild(th);
-    });
-    table.appendChild(headerRow);
-
-    // Crear filas de la tabla
+    // Crear tarjetas para cada fila
     pageData.forEach(row => {
-        const tr = document.createElement('tr');
-        headers.forEach(header => {
-            const td = document.createElement('td');
-            td.textContent = row[header];
-            td.className = 'border px-4 py-2';
-            tr.appendChild(td);
+        const card = document.createElement('div');
+        card.className = 'bg-white shadow-md rounded p-4 mb-4';
+
+        Object.keys(row).forEach(header => {
+            const p = document.createElement('p');
+            p.className = 'mb-2';
+            p.innerHTML = `<strong>${header}:</strong> ${row[header]}`;
+            card.appendChild(p);
         });
-        table.appendChild(tr);
+
+        container.appendChild(card);
     });
 }
 
