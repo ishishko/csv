@@ -16,6 +16,12 @@ function hideSearchResults() {
     }, 200); // Retraso para permitir hacer clic en los resultados
 }
 
+// Función para resaltar las coincidencias en negrita
+function highlightMatch(text, query) {
+    const regex = new RegExp(`(${query})`, 'gi');
+    return text.replace(regex, '<strong>$1</strong>');
+}
+
 // Función para filtrar los datos basados en la búsqueda
 function filterData() {
     const searchInput = document.getElementById('searchInput').value.toLowerCase();
@@ -39,11 +45,11 @@ function filterData() {
     const resultsToShow = filteredData.slice(0, 10);
     resultsToShow.forEach((row, index) => {
         const resultItem = document.createElement('div');
-        resultItem.className = 'hover:bg-blue-400';
+        resultItem.className = 'hover:bg-blue-400 text-gray-700';
         resultItem.innerHTML = `
-            <span class="flex-1"><strong>Scientific name:</strong> ${row['Scientific name'] || ''}</span>
-            <span class="flex-1"><strong>Synonym:</strong> ${row['Synonym'] || ''}</span>
-            <span class="flex-1"><strong>Common Name:</strong> ${row['Common Name'] || ''}</span>
+            <span class="flex-1">${highlightMatch(row['Scientific name'] || '', searchInput)}</span>
+            <span class="flex-1">${highlightMatch(row['Synonym'] || '', searchInput)}</span>
+            <span class="flex-1">${highlightMatch(row['Common Name'] || '', searchInput)}</span>
         `;
         resultItem.onclick = () => {
             currentPage = index;
