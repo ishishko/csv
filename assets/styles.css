@@ -1,0 +1,27 @@
+/* assets/styles.css */
+
+#container {
+    height: 85vh; /* 90% de la altura de la pantalla */
+}
+
+#csvContainer{
+    max-height: 95%;
+    height: 95%;
+}
+
+#cardsContainer{
+    max-height: 90%;
+    overflow-y: auto;
+}
+
+#searchResults {
+    display: none; /* Ocultar por defecto */
+}
+
+#searchResults div {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    cursor: pointer;
+}
+

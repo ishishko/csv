@@ -8,25 +8,26 @@
     <script defer src="assets/app.js"></script>
     <script defer src="assets/paginacion.js"></script>
     <script defer src="assets/cards.js"></script>
+    <script defer src="assets/buscador.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <style>
-        #csvContainer {
-            height: 80vh; /* 80% de la altura de la página */
-        }
-    </style>
+    <link rel="stylesheet" href="assets/styles.css">
 </head>
-<body class="bg-gray-100 p-6">
-    <div class="container mx-auto">
-        <h1 class="text-2xl font-bold mb-4">Papua Nueva Guinea - Fishes</h1>
-        <div id="csvContainer" class="flex flex-col items-center justify-center overflow-x-auto">
+<body class="bg-blue-400 p-6 text-gray-800">
+    <div id="container" class="container mx-auto relative bg-blue-300 p-6 rounded-2xl shadow-lg">
+        <h1 class="text-3xl font-bold mb-4">Papua Nueva Guinea - Fishes</h1>
+        <div id="csvContainer" class="flex flex-col items-start justify-start overflow-x-auto relative w-full rounded-2xl">
             <!-- Barra de búsqueda -->
-            <input type="text" id="searchInput" placeholder="Buscar..." class="mb-4 p-2 border border-gray-300 rounded w-full" oninput="filterData()">
+            <div class="relative w-full rounded-2xl">
+                <input type="text" id="searchInput" placeholder="Buscar..." class="mb-4 p-2 border border-blue-300 rounded-2xl w-full bg-blue-100 focus:outline-none" oninput="filterData()" onfocus="showSearchResults()" onblur="hideSearchResults()">
+                <!-- Menú desplegable para los resultados de búsqueda -->
+                <div id="searchResults" class="bg-blue-200 text-gray-700 border-2 border-blue-400 rounded-2xl w-full absolute z-10"></div>
+            </div>
             <!-- Contenedor para las tarjetas -->
-            <div id="cardsContainer" class="w-full flex flex-col items-center">
+            <div id="cardsContainer" class="w-full flex flex-col items-start bg-blue-300 rounded-2xl">
                 <!-- Las tarjetas se llenarán dinámicamente con JavaScript -->
             </div>
         </div>
-        <div id="paginationControls" class="mt-4 flex justify-center">
+        <div id="paginationControls" class="mt-4 flex justify-center rounded-2xl">
             <!-- Los controles de paginación se llenarán dinámicamente con JavaScript -->
         </div>
     </div>

@@ -17,7 +17,7 @@ function displayPage(page) {
     container.innerHTML = '';
 
     if (filteredData.length === 0) {
-        container.innerHTML = '<div class="border px-4 py-2">No hay datos para mostrar</div>';
+        container.innerHTML = '<div class="border rounded-2xl px-4 py-2 mx-auto">No data to display</div>';
         return;
     }
 
@@ -123,15 +123,4 @@ function updatePaginationControls() {
         };
         paginationControls.appendChild(lastButton);
     }
-}
-
-// Función para filtrar los datos basados en la búsqueda
-function filterData() {
-    const searchInput = document.getElementById('searchInput').value.toLowerCase();
-    filteredData = data.filter(row => {
-        return Object.values(row).some(value => value.toLowerCase().includes(searchInput));
-    });
-    currentPage = 0;
-    displayPage(currentPage);
-    updatePaginationControls();
 }

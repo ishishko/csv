@@ -3,7 +3,7 @@
 // Función para crear una tarjeta (card) a partir de una fila de datos
 function createCard(row) {
     const card = document.createElement('div');
-    card.className = 'bg-white shadow-md rounded p-4 mb-4';
+    card.className = 'bg-blue-100 shadow-md rounded-2xl p-4 mb-4';
 
     Object.keys(row).forEach(header => {
         const p = document.createElement('p');
