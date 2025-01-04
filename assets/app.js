@@ -1,5 +1,6 @@
 // assets/app.js
 
+// Función para cargar y procesar el archivo CSV
 function processCSV() {
     const filePath = './data/Papua.csv';
 
@@ -10,6 +11,7 @@ function processCSV() {
                 header: true,
                 complete: function(results) {
                     data = results.data;
+                    filteredData = data; // Inicializar filteredData con los datos completos
                     currentPage = 0;
                     displayPage(currentPage);
                     updatePaginationControls();

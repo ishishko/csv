@@ -18,8 +18,13 @@
 <body class="bg-gray-100 p-6">
     <div class="container mx-auto">
         <h1 class="text-2xl font-bold mb-4">Papua Nueva Guinea - Fishes</h1>
-        <div id="csvContainer" class="flex items-center justify-center overflow-x-auto">
-            <!-- Las tarjetas se llenarán dinámicamente con JavaScript -->
+        <div id="csvContainer" class="flex flex-col items-center justify-center overflow-x-auto">
+            <!-- Barra de búsqueda -->
+            <input type="text" id="searchInput" placeholder="Buscar..." class="mb-4 p-2 border border-gray-300 rounded w-full" oninput="filterData()">
+            <!-- Contenedor para las tarjetas -->
+            <div id="cardsContainer" class="w-full flex flex-col items-center">
+                <!-- Las tarjetas se llenarán dinámicamente con JavaScript -->
+            </div>
         </div>
         <div id="paginationControls" class="mt-4 flex justify-center">
             <!-- Los controles de paginación se llenarán dinámicamente con JavaScript -->

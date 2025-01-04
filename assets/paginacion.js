@@ -1,26 +1,29 @@
 // assets/paginacion.js
 
+// Variables globales para manejar la paginación y los datos
 let currentPage = 0;
 let rowsPerPage = 1; // Mostrar 1 resultado por página
 let data = [];
+let filteredData = [];
 const maxPagesToShow = 7; // Mostrar un máximo de 7 páginas en la paginación
 
+// Función para mostrar una página específica
 function displayPage(page) {
-    const container = document.getElementById('csvContainer');
+    const container = document.getElementById('cardsContainer');
     if (!container) {
-        console.error('El contenedor csvContainer no se encuentra en el DOM.');
+        console.error('El contenedor cardsContainer no se encuentra en el DOM.');
         return;
     }
     container.innerHTML = '';
 
-    if (data.length === 0) {
+    if (filteredData.length === 0) {
         container.innerHTML = '<div class="border px-4 py-2">No hay datos para mostrar</div>';
         return;
     }
 
     const start = page * rowsPerPage;
     const end = start + rowsPerPage;
-    const pageData = data.slice(start, end);
+    const pageData = filteredData.slice(start, end);
 
     // Crear tarjetas para cada fila
     pageData.forEach(row => {
@@ -29,8 +32,9 @@ function displayPage(page) {
     });
 }
 
+// Función para actualizar los controles de paginación
 function updatePaginationControls() {
-    const totalPages = Math.ceil(data.length / rowsPerPage);
+    const totalPages = Math.ceil(filteredData.length / rowsPerPage);
     const paginationControls = document.getElementById('paginationControls');
     if (!paginationControls) {
         console.error('El contenedor paginationControls no se encuentra en el DOM.');
@@ -74,6 +78,7 @@ function updatePaginationControls() {
         paginationControls.appendChild(prev10Button);
     }
 
+    // Botones para las páginas visibles
     for (let i = startPage; i < endPage; i++) {
         const button = document.createElement('button');
         button.textContent = i + 1;
@@ -118,4 +123,15 @@ function updatePaginationControls() {
         };
         paginationControls.appendChild(lastButton);
     }
+}
+
+// Función para filtrar los datos basados en la búsqueda
+function filterData() {
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    filteredData = data.filter(row => {
+        return Object.values(row).some(value => value.toLowerCase().includes(searchInput));
+    });
+    currentPage = 0;
+    displayPage(currentPage);
+    updatePaginationControls();
 }

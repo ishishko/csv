@@ -1,5 +1,6 @@
 // assets/cards.js
 
+// Función para crear una tarjeta (card) a partir de una fila de datos
 function createCard(row) {
     const card = document.createElement('div');
     card.className = 'bg-white shadow-md rounded p-4 mb-4';
