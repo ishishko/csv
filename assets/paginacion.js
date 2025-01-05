@@ -42,8 +42,9 @@ function updatePaginationControls() {
     }
     paginationControls.innerHTML = '';
 
-    const startPage = Math.max(0, currentPage - Math.floor(maxPagesToShow / 2));
-    const endPage = Math.min(totalPages, startPage + maxPagesToShow);
+    const maxButtons = window.innerWidth <= 512 ? 3 : maxPagesToShow;
+    const startPage = Math.max(0, currentPage - Math.floor(maxButtons / 2));
+    const endPage = Math.min(totalPages, startPage + maxButtons);
 
     // Botón para la primera página
     if (startPage > 0) {
@@ -66,7 +67,7 @@ function updatePaginationControls() {
     }
 
     // Botón para bajar 10 páginas
-    if (currentPage >= 10) {
+    if (currentPage >= 10 && window.innerWidth > 512) {
         const prev10Button = document.createElement('button');
         prev10Button.textContent = '<<';
         prev10Button.className = 'bg-blue-500 text-white px-4 py-2 m-1 rounded';
@@ -92,7 +93,7 @@ function updatePaginationControls() {
     }
 
     // Botón para subir 10 páginas
-    if (currentPage < totalPages - 10) {
+    if (currentPage < totalPages - 10 && window.innerWidth > 512) {
         const next10Button = document.createElement('button');
         next10Button.textContent = '>>';
         next10Button.className = 'bg-blue-500 text-white px-4 py-2 m-1 rounded';
@@ -124,3 +125,8 @@ function updatePaginationControls() {
         paginationControls.appendChild(lastButton);
     }
 }
+
+// Escuchar cambios en el tamaño de la ventana para ajustar la paginación
+window.addEventListener('resize', () => {
+    updatePaginationControls();
+});

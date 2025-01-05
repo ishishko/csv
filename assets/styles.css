@@ -1,7 +1,6 @@
-/* assets/styles.css */
-
 #container {
-    height: 85vh; /* 90% de la altura de la pantalla */
+    height: 85vh;
+    max-height: 85vh;
 }
 
 #csvContainer {
@@ -12,11 +11,13 @@
 #cardsContainer {
     max-height: 90%;
     overflow-y: auto;
-    overflow-x: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 #searchResults {
-    display: none; /* Ocultar por defecto */
+    display: none;
 }
 
 #searchResults div {
@@ -26,36 +27,43 @@
     cursor: pointer;
 }
 
+.card p {
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
 /* Media query para pantallas con un ancho máximo de 512px */
 @media (max-width: 512px) {
     #container {
-        padding: 4px; /* Reducir el padding */
+        padding: 4px;
     }
 
     #csvContainer {
-        padding: 4px; /* Reducir el padding */
+        padding: 4px;
         font-size: 14px;
+        height: 89%;
     }
 
     #cardsContainer {
-        padding: 4px; /* Reducir el padding */
+        padding: 4px;
+        max-height: 90%;
     }
 
     #searchInput {
-        font-size: 14px; /* Reducir el tamaño de la fuente */
-        padding: 4px; /* Reducir el padding */
+        font-size: 14px;
+        padding: 4px;
     }
 
     #searchResults div {
-        padding: 4px; /* Reducir el padding */
-        border-bottom: 1px solid #ccc; /* Línea separadora */
+        padding: 4px;
+        border-bottom: 1px solid #ccc;
     }
 
     #searchResults div:last-child {
-        border-bottom: none; /* Quitar la línea del último elemento */
+        border-bottom: none;
     }
 
     h1 {
-        font-size: 24px; /* Reducir el tamaño de la fuente del título */
+        font-size: 24px;
     }
 }
