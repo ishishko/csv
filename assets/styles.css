@@ -4,14 +4,15 @@
     height: 85vh; /* 90% de la altura de la pantalla */
 }
 
-#csvContainer{
+#csvContainer {
     max-height: 95%;
     height: 95%;
 }
 
-#cardsContainer{
+#cardsContainer {
     max-height: 90%;
     overflow-y: auto;
+    overflow-x: none;
 }
 
 #searchResults {
@@ -25,3 +26,36 @@
     cursor: pointer;
 }
 
+/* Media query para pantallas con un ancho máximo de 512px */
+@media (max-width: 512px) {
+    #container {
+        padding: 4px; /* Reducir el padding */
+    }
+
+    #csvContainer {
+        padding: 4px; /* Reducir el padding */
+        font-size: 14px;
+    }
+
+    #cardsContainer {
+        padding: 4px; /* Reducir el padding */
+    }
+
+    #searchInput {
+        font-size: 14px; /* Reducir el tamaño de la fuente */
+        padding: 4px; /* Reducir el padding */
+    }
+
+    #searchResults div {
+        padding: 4px; /* Reducir el padding */
+        border-bottom: 1px solid #ccc; /* Línea separadora */
+    }
+
+    #searchResults div:last-child {
+        border-bottom: none; /* Quitar la línea del último elemento */
+    }
+
+    h1 {
+        font-size: 24px; /* Reducir el tamaño de la fuente del título */
+    }
+}
