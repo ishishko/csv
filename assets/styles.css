@@ -27,12 +27,6 @@
     cursor: pointer;
 }
 
-.card p {
-    word-break: break-word;
-    overflow-wrap: break-word;
-    overflow-x: hidden;
-}
-
 /* Media query para pantallas con un ancho máximo de 512px */
 @media (max-width: 512px) {
     #container {
@@ -42,7 +36,7 @@
     #csvContainer {
         padding: 4px;
         font-size: 14px;
-        height: 89%;
+        height: 91%;
     }
 
     #cardsContainer {
