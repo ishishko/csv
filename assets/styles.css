@@ -30,6 +30,7 @@
 .card p {
     word-break: break-word;
     overflow-wrap: break-word;
+    overflow-x: hidden;
 }
 
 /* Media query para pantallas con un ancho máximo de 512px */
