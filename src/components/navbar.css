@@ -19,7 +19,7 @@
 }
 
 #title {
-    animation: shrink 2.5s ease-out forwards;
+    animation: shrink 2s ease-out forwards;
 }
 
 /* Animación para el fondo del navbar */
