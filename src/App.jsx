@@ -24,7 +24,7 @@ function App() {
       <div id="layout" className={`relative z-10 flex justify-center flex-col h-[95%] w-[75%] bg-blue-500 bg-opacity-50 rounded-lg shadow-lg text-gray-900 ${animate ? 'animate' : ''}`}>
         <NavBar />
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Fishes />} />
           <Route path='/fishes' element={<Fishes />} />
           <Route path='/galery' element={<Galery />} />
         </Routes>
