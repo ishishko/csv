@@ -1,0 +1,60 @@
+/* Animación para el ancho del título */
+@keyframes shrink {
+    0% {
+        width: 100%;
+        opacity: 0;
+    }
+    50% {
+        width: 100%;
+        opacity: 1;
+    }
+    80% {
+        width: 100%;
+        opacity: 1;
+    }
+    100% {
+        width: 40%;
+        opacity: 1;
+    }
+}
+
+#title {
+    animation: shrink 2s ease-out forwards;
+}
+
+/* Animación para el fondo del navbar */
+@keyframes changeBackground {
+    0% {
+        background-color: rgba(191, 219, 254, 0.75); /* bg-blue-200 */
+    }
+    80% {
+        background-color: rgba(191, 219, 254, 0.75); /* bg-blue-200 */
+    }
+    100% {
+        background-color: rgba(191, 219, 254, 0.5); /* bg-blue-200 con opacidad del 50% */
+    }
+}
+
+#navbar {
+    animation: changeBackground 2s ease-out forwards;
+}
+
+/* Animación para el div links */
+@keyframes expandLinks {
+    0% {
+        width: 0;
+        opacity: 0;
+    }
+    80% {
+        width: 0%;
+        opacity: 0%;
+    }
+    100% {
+        width: 60%;
+        opacity: 1;
+    }
+}
+
+#links {
+    animation: expandLinks 2s ease-out forwards;
+}
