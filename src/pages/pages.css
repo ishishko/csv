@@ -80,6 +80,9 @@
     }
   }
   
-  #home #fishes{
+  #home {
     animation: expandHeightAndFadeIn 2s ease-in-out forwards;
+    max-height: fit-content;
+    background-color: rgba(235, 248, 255, 0.75) !important;
+    width: 60%;
   }
